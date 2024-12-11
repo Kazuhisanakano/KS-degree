@@ -1,10 +1,18 @@
 \documentclass[12pt,a4j]{jreport}
-\usepackage{graphicx}  % Overleafではdvipdfmx不要
+\usepackage{color}
+\usepackage[dvipdfmx]{graphicx} % pdfLaTeXで画像を扱うためにgraphicxパッケージのみを使用
+\usepackage{bmpsize}
 \usepackage{otf}  % 日本語用フォントサポート
 \usepackage{caption}  % キャプションの整形
 \usepackage{cite}  % 引用スタイルの統一
-\usepackage{comment} 
-\usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{here}
+\usepackage[utf8]{inputenc}  % UTF-8エンコーディングの指定
+\usepackage{CJKutf8}         % CJKパッケージの読み込み
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 \begin{document}
 
