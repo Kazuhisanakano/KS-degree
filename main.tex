@@ -1,10 +1,19 @@
-\documentclass[12pt,a4j]{jreport}
+\documentclass[12pt,a4j]{jsreport}
 \usepackage{graphicx}  % Overleafではdvipdfmx不要
-\usepackage{otf}  % 日本語用フォントサポート
+\usepackage[deluxe,uplatex]{otf}  % 日本語用フォントサポート
 \usepackage{caption}  % キャプションの整形
-\usepackage{cite}  % 引用スタイルの統一
 \usepackage{comment} 
-\usepackage[longnamesfirst]{natbib}
+\usepackage[numbers,sort&compress]{natbib}
+
+\setcitestyle{numbers,square,comma}
+
+% 各章のタイトルが改行されてしまう現象が発生したので追記
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+  {\huge\bfseries}
+  {第\thechapter{}章\ }
+  {0pt}
+  {}
 
 \begin{document}
 
@@ -34,44 +43,41 @@
 % 第2章｛先行研究・関連研究｝
 \input{chapter/chapter2}
 
-% 第3章｛研究方法｝
+% 第3章｛提案手法｝
 \input{chapter/chapter3}
 
-% 第4章｛実験・事例｝
+% 第4章｛実験｝
 \input{chapter/chapter4}
 
 % 第5章｛結果｝
 \input{chapter/chapter5}
 
-% 第6章｛考察・ディスカッション｝
+% 第6章｛考察｝
 \input{chapter/chapter6}
 
-% 第7章｛結論｝
+% 第7章｛まとめ｝
 \input{chapter/chapter7}
 
 % 参考文献
 \renewcommand{\bibname}{参考文献}
-\bibliographystyle{jecon}
+\bibliographystyle{unsrtnat}
 \bibliography{Master-paper}
 
+% 付録
+%% 付録用の章見出しの設定
+\newcommand{\appchapterfmt}{
+  \titleformat{\chapter}[hang]
+    {\huge\bfseries}
+    {付録~\Alph{chapter}\ }
+    {0pt}
+    {}
+}\setcounter{chapter}{0} % 章番号をリセット
+\appchapterfmt  % 付録用の章見出しを適用
+%% 付録開始
+\appendix
+\input{appendix/appendix}
+
 \begin{comment}
-
-Mater-paper.bibへの記載情報例
-(Teece_etal_1997)のように記載したものを
-論文中に\citep{Teece_eaal_1997}のように示すと
-本研究は... Dynamic Capability(Teece, Pisano and Shuen, 1997)に表示できます．
-詳しくは”jecon-example.pdf”を参照ください．
-
-@article{Teece_etal_1997,
-        author = {Teece, David J. and Pisano, Gary and Shuen, Amy},
-        title = {Dynamic capabilities and strategic management},
-        journal = {Strategic Management Journal},
-        volume = {18},
-        number = {7},
-        pages = {509-533},
-        year = {1997},
-        doi = {doi.org/10.1002/(SICI)1097-0266(199708)18:7<509::AID-SMJ882>3.0.CO;2-Z},
-}
 
 \end{comment}
 
